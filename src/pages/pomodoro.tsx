@@ -7,6 +7,16 @@ const Pomodoro = () => {
   const [isActive, setIsActive] = useState(false);
   let interval: NodeJS.Timeout | undefined;
 
+  // Defina um objeto de cores associadas aos tipos de timer
+  const timerColors: Record<string, string> = {
+    focus: "#BA4949",
+    shortBreak: "#396366",
+    longBreak: "#204E6F",
+  };
+
+  // Use o timerColors para obter a cor do fundo com base no timer ativo
+  const backgroundColor = timerColors[activeTimer];
+
   useEffect(() => {
     if (isActive && minutes >= 0) {
       interval = setInterval(() => {
@@ -48,19 +58,38 @@ const Pomodoro = () => {
   };
 
   return (
-    <div>
-      <h1>Pomodoro</h1>
+    <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor }}>
       <div>
-        {activeTimer === "focus" && <p>focus time</p>}
-        {activeTimer === "shortBreak" && <p>short break</p>}
-        {activeTimer === "longBreak" && <p>long break</p>}
-        {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
-      </div>
-      <div>
-        <button onClick={() => startTimer("focus", 25)}>iniciar</button>
-        <button onClick={() => startTimer("shortBreak", 5)}>short break</button>
-        <button onClick={() => startTimer("longBreak", 15)}>long break</button>
-        <button onClick={resetTimer}>resetar</button>
+        <h1>Pomodoro</h1>
+        <div>
+          {activeTimer === "focus" && <p>Focus Time</p>}
+          {activeTimer === "shortBreak" && <p>Short Break</p>}
+          {activeTimer === "longBreak" && <p>Long Break</p>}
+          {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
+        </div>
+        <div>
+          <button
+            onClick={() => startTimer("focus", 25)}
+            className="bg-red-500 text-white px-4 py-2 m-2"
+          >
+            Iniciar
+          </button>
+          <button
+            onClick={() => startTimer("shortBreak", 5)}
+            className="bg-green-500 text-white px-4 py-2 m-2"
+          >
+            Short Break
+          </button>
+          <button
+            onClick={() => startTimer("longBreak", 15)}
+            className="bg-blue-500 text-white px-4 py-2 m-2"
+          >
+            Long Break
+          </button>
+          <button onClick={resetTimer} className="bg-gray-500 text-white px-4 py-2 m-2">
+            Resetar
+          </button>
+        </div>
       </div>
     </div>
   );
