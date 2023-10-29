@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const PomodoroTimer = () => {
+const Pomodoro = () => {
     const [minutes, setMinutes] = useState(25);
     const [seconds, setSeconds] = useState(0);
     const [isActive, setIsActive] = useState(false);
@@ -48,17 +48,17 @@ const PomodoroTimer = () => {
 
   return (
     <div>
-      <h1>Pomodoro Timer</h1>
+      <h1>Pomodoro</h1>
       <div>
         {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
       </div>
       <div>
-        <button onClick={startTimer}>Start</button>
-        <button onClick={pauseTimer}>Pause</button>
-        <button onClick={resetTimer}>Reset</button>
+        <button onClick={startTimer}>Iniciar</button>
+        <button onClick={pauseTimer}>Pausar</button>
+        <button onClick={resetTimer}>Resetar</button>
       </div>
     </div>
   );
 };
 
-export default PomodoroTimer;
+export default Pomodoro;
