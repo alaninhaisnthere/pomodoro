@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import classNames from "classnames";
+import Head from "next/head";
 
 const Pomodoro = () => {
   const [activeTimer, setActiveTimer] = useState("focus");
@@ -7,14 +9,12 @@ const Pomodoro = () => {
   const [isActive, setIsActive] = useState(false);
   let interval: NodeJS.Timeout | undefined;
 
-  // Defina um objeto de cores associadas aos tipos de timer
   const timerColors: Record<string, string> = {
     focus: "#BA4949",
     shortBreak: "#396366",
     longBreak: "#204E6F",
   };
 
-  // Use o timerColors para obter a cor do fundo com base no timer ativo
   const backgroundColor = timerColors[activeTimer];
 
   useEffect(() => {
@@ -58,7 +58,10 @@ const Pomodoro = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor }}>
+    <div className="min-h-screen flex items-center justify-center">
+      <Head>
+        <style>{`body { background-color: ${backgroundColor}; }`}</style>
+      </Head>
       <div>
         <h1>Pomodoro</h1>
         <div>
