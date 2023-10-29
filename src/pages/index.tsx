@@ -1,15 +1,15 @@
-import Link from 'next/link';
+import Head from "next/head";
+import Pomodoro from "../components/pomodoro";
 
-const Home = () => {
+const PomodoroPage = () => {
   return (
     <div>
-      <h1>Pomodoro</h1>
-      <p>teste pomodoro</p>
-      <Link href="/pomodoro">
-        Iniciar
-      </Link>
+      <Head>
+        <title>Pomodoro</title>
+      </Head>
+      <Pomodoro />
     </div>
   );
 };
 
-export default Home;
+export default PomodoroPage;
