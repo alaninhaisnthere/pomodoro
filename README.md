@@ -1,17 +1,17 @@
-# Pomodoro Timer :clock3:
+:clock3: # Pomodoro Timer
 
 Este é um aplicativo de timer Pomodoro desenvolvido em React/Typescript.
 
 O Pomodoro é uma técnica de gerenciamento de tempo que ajuda a aumentar a produtividade. O método envolve dividir o trabalho em períodos de concentração (geralmente 25 minutos) seguidos por pequenas pausas. Este aplicativo permite que você possa gerenciar seu tempo de maneira mais eficaz.
 
-## Funcionalidades :white_check_mark:
+:white_check_mark: ## Funcionalidades
 
 - Temporizadores para foco, pequenas pausas e pausas longas.
 - Cor de fundo dinâmica que muda com base no tipo de timer ativo.
 - Contagem regressiva visível do tempo restante.
 - Botão de reinicialização para voltar ao timer inicial.
 
-## Como usar :thought_balloon:
+:thought_balloon: ## Como usar
 
 1. Escolha o tipo de timer (Focus Time, Short Break, ou Long Break).
 2. Clique no botão correspondente para iniciar o temporizador.
@@ -20,7 +20,7 @@ O Pomodoro é uma técnica de gerenciamento de tempo que ajuda a aumentar a prod
 5. Quando o timer atingir zero, o temporizador será interrompido automaticamente.
 6. Clique no botão "Resetar" a qualquer momento para voltar ao timer de foco.
 
-## Instalação :computer:
+:computer: ## Instalação
 
 Para usar este aplicativo, siga estas etapas:
 
@@ -50,7 +50,7 @@ Para usar este aplicativo, siga estas etapas:
 
 5. O aplicativo estará disponível em [http://localhost:3000](http://localhost:3000).
 
-## Contribuição :raising_hand:
+:raising_hand: ## Contribuição 
 
 Sinta-se à vontade para contribuir para este projeto abrindo problemas ou enviando solicitações pull. 
 
