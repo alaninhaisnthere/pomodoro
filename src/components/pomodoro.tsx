@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Countdown from "./countdown";
+import { Pause, Play, RotateCcw } from "styled-icons/feather";
 
 const Pomodoro = () => {
   const [activeTimer, setActiveTimer] = useState("focus");
@@ -85,7 +86,7 @@ const Pomodoro = () => {
       </Head>
       <style>{`body { background-color: ${timerColors[activeTimer]}; }`}</style>
       <div className="text-center">
-        <div className="text-white font-inter text-64 border-4 border-white rounded-full w-24 h-24 mx-auto flex items-center justify-center">
+        <div className="text-white font-inter text-64 w-24 h-24 mx-auto flex items-center justify-center">
           <Countdown minutes={minutes} seconds={seconds} />
         </div>
         <div className="font-inter text-32 mt-4">
@@ -113,10 +114,10 @@ const Pomodoro = () => {
             Long Break
           </button>
           <button onClick={resetTimer} className="bg-gray-500 text-white px-4 py-2 m-2">
-            Resetar
+            <RotateCcw size={16} /> 
           </button>
           <button onClick={pauseTimer} className="bg-gray-500 text-white px-4 py-2 m-2">
-            {isPaused ? "Continuar" : "Pausar"}
+            {isPaused ? <Play size={16} /> : <Pause size={16} />} {isPaused ? "Continuar" : "Pausar"}
           </button>
         </div>
       </div>
