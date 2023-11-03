@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import classNames from "classnames";
 import Head from "next/head";
 
 const Pomodoro = () => {
@@ -15,7 +14,10 @@ const Pomodoro = () => {
     longBreak: "#204E6F",
   };
 
-  const backgroundColor = timerColors[activeTimer];
+  useEffect(() => {
+    const backgroundColor = timerColors[activeTimer];
+    document.body.style.backgroundColor = backgroundColor;
+  }, [activeTimer]);
 
   useEffect(() => {
     if (isActive && minutes >= 0) {
@@ -60,17 +62,19 @@ const Pomodoro = () => {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <Head>
-        <style>{`body { background-color: ${backgroundColor}; }`}</style>
+        <title>Pomodoro</title>
       </Head>
-      <div>
-        <h1>Pomodoro</h1>
-        <div>
+      <style>{`body { background-color: ${timerColors[activeTimer]}; }`}</style>
+      <div className="text-center">
+      <div className="text-white font-inter text-64 rounded-full bg-black w-24 h-24 mx-auto flex items-center justify-center">
+          {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
+        </div>
+        <div className="font-inter text-32 mt-4">
           {activeTimer === "focus" && <p>Focus Time</p>}
           {activeTimer === "shortBreak" && <p>Short Break</p>}
           {activeTimer === "longBreak" && <p>Long Break</p>}
-          {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
         </div>
-        <div>
+        <div className="mt-4">
           <button
             onClick={() => startTimer("focus", 25)}
             className="bg-red-500 text-white px-4 py-2 m-2"
