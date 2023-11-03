@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Pomodoro Timer :clock3:
 
-## Getting Started
+Este é um aplicativo de timer Pomodoro desenvolvido em React/Typescript.
 
-First, run the development server:
+O Pomodoro é uma técnica de gerenciamento de tempo que ajuda a aumentar a produtividade. O método envolve dividir o trabalho em períodos de concentração (geralmente 25 minutos) seguidos por pequenas pausas. Este aplicativo permite que você possa gerenciar seu tempo de maneira mais eficaz.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Funcionalidades :white_check_mark:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Temporizadores para foco, pequenas pausas e pausas longas.
+- Cor de fundo dinâmica que muda com base no tipo de timer ativo.
+- Contagem regressiva visível do tempo restante.
+- Botão de reinicialização para voltar ao timer inicial.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Como usar :thought_balloon:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Escolha o tipo de timer (Focus Time, Short Break, ou Long Break).
+2. Clique no botão correspondente para iniciar o temporizador.
+3. A cor de fundo da página mudará de acordo com o tipo de timer ativo.
+4. A contagem regressiva mostrará o tempo restante.
+5. Quando o timer atingir zero, o temporizador será interrompido automaticamente.
+6. Clique no botão "Resetar" a qualquer momento para voltar ao timer de foco.
 
-## Learn More
+## Instalação :computer:
 
-To learn more about Next.js, take a look at the following resources:
+Para usar este aplicativo, siga estas etapas:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Clone este repositório:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   ```bash
+   git clone https://seu-repositorio.git
+   ```
 
-## Deploy on Vercel
+2. Navegue até o diretório do projeto:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   cd pomodoro-timer
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+3. Instale as dependências:
+
+   ```bash
+   npm install
+   ```
+
+4. Inicie o aplicativo:
+
+   ```bash
+   npm start
+   ```
+
+5. O aplicativo estará disponível em [http://localhost:3000](http://localhost:3000).
+
+## Contribuição :raising_hand:
+
+Sinta-se à vontade para contribuir para este projeto abrindo problemas ou enviando solicitações pull. 
+
+
+:cherry_blossom: Alana Oliveira :cherry_blossom:
