@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Countdown from "./countdown";
 
@@ -8,6 +7,7 @@ const Pomodoro = () => {
   const [minutes, setMinutes] = useState(25);
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   let interval: NodeJS.Timeout | undefined;
 
   const timerColors: Record<string, string> = {
@@ -33,7 +33,7 @@ const Pomodoro = () => {
   }, [activeTimer]);
 
   useEffect(() => {
-    if (isActive && minutes >= 0) {
+    if (isActive && minutes >= 0 && !isPaused) {
       interval = setInterval(() => {
         if (seconds === 0) {
           if (minutes === 0) {
@@ -56,17 +56,23 @@ const Pomodoro = () => {
         clearInterval(interval);
       }
     };
-  }, [isActive, minutes, seconds]);
+  }, [isActive, minutes, seconds, isPaused]);
 
   const startTimer = (timerType: string, timerMinutes: number) => {
     setActiveTimer(timerType);
     setMinutes(timerMinutes);
     setSeconds(0);
     setIsActive(true);
+    setIsPaused(false);
+  };
+
+  const pauseTimer = () => {
+    setIsPaused(!isPaused);
   };
 
   const resetTimer = () => {
     setIsActive(false);
+    setIsPaused(false);
     setActiveTimer("focus");
     setMinutes(25);
     setSeconds(0);
@@ -108,6 +114,9 @@ const Pomodoro = () => {
           </button>
           <button onClick={resetTimer} className="bg-gray-500 text-white px-4 py-2 m-2">
             Resetar
+          </button>
+          <button onClick={pauseTimer} className="bg-gray-500 text-white px-4 py-2 m-2">
+            {isPaused ? "Continuar" : "Pausar"}
           </button>
         </div>
       </div>
