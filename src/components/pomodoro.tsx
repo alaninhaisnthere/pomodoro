@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
+import Countdown from "./countdown";
 
 const Pomodoro = () => {
   const [activeTimer, setActiveTimer] = useState("focus");
@@ -66,8 +67,8 @@ const Pomodoro = () => {
       </Head>
       <style>{`body { background-color: ${timerColors[activeTimer]}; }`}</style>
       <div className="text-center">
-      <div className="text-white font-inter text-64 border-4 border-white rounded-full w-24 h-24 mx-auto flex items-center justify-center">
-          {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
+        <div className="text-white font-inter text-64 border-4 border-white rounded-full w-24 h-24 mx-auto flex items-center justify-center">
+          <Countdown minutes={minutes} seconds={seconds} /> {/* Use o componente Countdown aqui */}
         </div>
         <div className="font-inter text-32 mt-4">
           {activeTimer === "focus" && <p>Focus Time</p>}
