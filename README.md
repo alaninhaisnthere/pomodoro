@@ -56,7 +56,7 @@ Para usar este aplicativo, siga estas etapas:
 
 ## Contribuição :raising_hand:
 
-Sinta-se à vontade para contribuir para este projeto abrindo problemas ou enviando solicitações pull. 
+Sinta-se à vontade para contribuir para este projeto abrindo issues ou enviando solicitações pull. 
 
 
 :cherry_blossom: Alana Oliveira :cherry_blossom:
