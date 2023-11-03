@@ -66,7 +66,7 @@ const Pomodoro = () => {
       </Head>
       <style>{`body { background-color: ${timerColors[activeTimer]}; }`}</style>
       <div className="text-center">
-      <div className="text-white font-inter text-64 rounded-full bg-black w-24 h-24 mx-auto flex items-center justify-center">
+      <div className="text-white font-inter text-64 border-4 border-white rounded-full w-24 h-24 mx-auto flex items-center justify-center">
           {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
         </div>
         <div className="font-inter text-32 mt-4">
@@ -79,7 +79,7 @@ const Pomodoro = () => {
             onClick={() => startTimer("focus", 25)}
             className="bg-red-500 text-white px-4 py-2 m-2"
           >
-            Iniciar
+            Focus Time
           </button>
           <button
             onClick={() => startTimer("shortBreak", 5)}
