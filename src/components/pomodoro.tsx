@@ -32,6 +32,7 @@ const Pomodoro = () => {
 
   const startSoundRef = useRef<HTMLAudioElement>(null);
   const finishSoundRef = useRef<HTMLAudioElement>(null);
+  const clickSoundRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
     if (startSoundRef.current) {
@@ -42,6 +43,11 @@ const Pomodoro = () => {
     if (finishSoundRef.current) {
       finishSoundRef.current.src = "/sounds/finish.mp3";
       finishSoundRef.current.load();
+    }
+
+    if (clickSoundRef.current) {
+      clickSoundRef.current.src = "/sounds/click.mp3";
+      clickSoundRef.current.load();
     }
   }, []);
 
@@ -92,6 +98,9 @@ const Pomodoro = () => {
 
   const pauseTimer = () => {
     setIsPaused(!isPaused);
+    if (clickSoundRef.current) {
+      clickSoundRef.current.play();
+    }
     if (!startSoundPlayed && !isPaused && startSoundRef.current) {
       startSoundRef.current.play();
       setStartSoundPlayed(true);
@@ -152,6 +161,7 @@ const Pomodoro = () => {
       </div>
       <audio ref={startSoundRef} />
       <audio ref={finishSoundRef} />
+      <audio ref={clickSoundRef} />
     </div>
   );
 };
