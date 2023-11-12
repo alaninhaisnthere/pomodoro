@@ -10,7 +10,7 @@ const Countdown: React.FC<CountdownProps> = ({ minutes, seconds }) => {
   const styleSeconds = { "--value": seconds } as React.CSSProperties;
 
   return (
-    <span className="countdown font-mono text-2xl">
+    <span className="countdown font-sans text-4xl">
       <span style={styleMinutes}></span>:
       <span style={styleSeconds}></span>
     </span>

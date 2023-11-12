@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import Countdown from "./countdown";
 import { Pause, Play, RotateCcw } from "styled-icons/feather";
@@ -28,10 +28,20 @@ const Pomodoro = () => {
     };
   };
 
+  const startSoundRef = useRef<HTMLAudioElement>(null);
+  const finishSoundRef = useRef<HTMLAudioElement>(null);
+
   useEffect(() => {
-    const backgroundColor = timerColors[activeTimer];
-    document.body.style.backgroundColor = backgroundColor;
-  }, [activeTimer]);
+    if (startSoundRef.current) {
+      startSoundRef.current.src = "/sounds/start.mp3";
+      startSoundRef.current.load();
+    }
+
+    if (finishSoundRef.current) {
+      finishSoundRef.current.src = "/sounds/finish.mp3";
+      finishSoundRef.current.load();
+    }
+  }, []);
 
   useEffect(() => {
     if (isActive && minutes >= 0 && !isPaused) {
@@ -40,6 +50,9 @@ const Pomodoro = () => {
           if (minutes === 0) {
             clearInterval(interval);
             setIsActive(false);
+            if (finishSoundRef.current) {
+              finishSoundRef.current.play();
+            }
           } else {
             setMinutes(minutes - 1);
             setSeconds(59);
@@ -48,6 +61,10 @@ const Pomodoro = () => {
           setSeconds(seconds - 1);
         }
       }, 1000);
+
+      if (startSoundRef.current) {
+        startSoundRef.current.play();
+      }
     } else {
       clearInterval(interval as NodeJS.Timeout);
     }
@@ -121,6 +138,8 @@ const Pomodoro = () => {
           </button>
         </div>
       </div>
+      <audio ref={startSoundRef} />
+      <audio ref={finishSoundRef} />
     </div>
   );
 };

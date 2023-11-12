@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Pomodoro from "../components/pomodoro";
+import React from "react";
 
 const PomodoroPage = () => {
   return (
