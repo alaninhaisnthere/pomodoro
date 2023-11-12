@@ -9,6 +9,8 @@ const Pomodoro = () => {
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [startSoundPlayed, setStartSoundPlayed] = useState(false);
+  const [finishSoundPlayed, setFinishSoundPlayed] = useState(false);
   let interval: NodeJS.Timeout | undefined;
 
   const timerColors: Record<string, string> = {
@@ -50,8 +52,9 @@ const Pomodoro = () => {
           if (minutes === 0) {
             clearInterval(interval);
             setIsActive(false);
-            if (finishSoundRef.current) {
+            if (!finishSoundPlayed && finishSoundRef.current) {
               finishSoundRef.current.play();
+              setFinishSoundPlayed(true);
             }
           } else {
             setMinutes(minutes - 1);
@@ -62,8 +65,9 @@ const Pomodoro = () => {
         }
       }, 1000);
 
-      if (startSoundRef.current) {
+      if (!startSoundPlayed && startSoundRef.current) {
         startSoundRef.current.play();
+        setStartSoundPlayed(true);
       }
     } else {
       clearInterval(interval as NodeJS.Timeout);
@@ -74,7 +78,7 @@ const Pomodoro = () => {
         clearInterval(interval);
       }
     };
-  }, [isActive, minutes, seconds, isPaused]);
+  }, [isActive, minutes, seconds, isPaused, startSoundPlayed, finishSoundPlayed]);
 
   const startTimer = (timerType: string, timerMinutes: number) => {
     setActiveTimer(timerType);
@@ -82,10 +86,16 @@ const Pomodoro = () => {
     setSeconds(0);
     setIsActive(true);
     setIsPaused(false);
+    setStartSoundPlayed(false);
+    setFinishSoundPlayed(false);
   };
 
   const pauseTimer = () => {
     setIsPaused(!isPaused);
+    if (!startSoundPlayed && !isPaused && startSoundRef.current) {
+      startSoundRef.current.play();
+      setStartSoundPlayed(true);
+    }
   };
 
   const resetTimer = () => {
@@ -94,6 +104,8 @@ const Pomodoro = () => {
     setActiveTimer("focus");
     setMinutes(25);
     setSeconds(0);
+    setStartSoundPlayed(false);
+    setFinishSoundPlayed(false);
   };
 
   return (
@@ -134,7 +146,7 @@ const Pomodoro = () => {
             <RotateCcw size={16} /> 
           </button>
           <button onClick={pauseTimer} className="bg-gray-500 text-white px-4 py-2 m-2">
-            {isPaused ? <Play size={16} /> : <Pause size={16} />} {isPaused ? "Continuar" : "Pausar"}
+            {isPaused ? <Play size={16} /> : <Pause size={16} />} {isPaused ? "Continue" : "Pause"}
           </button>
         </div>
       </div>
